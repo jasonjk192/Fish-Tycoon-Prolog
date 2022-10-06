@@ -113,7 +113,7 @@ bodyparent(goldshark,quicksilver,stickfish).
 bodyparent(grouper,stickfish,stickfish).
 bodyparent(quicksilver,snooper,stickfish).
 bodyparent(snooper,spotanus,stickfish).
-bodyparent(tickfish,stickfish,stickfish).
+bodyparent(stickfish,stickfish,stickfish).
 
 % BODY: CARP
 bodyparent(bananafish,grouper,carp).
@@ -128,14 +128,14 @@ bodyparent(grouper,pigmy,carp).
 bodyparent(leaffish,pigmy,carp).
 bodyparent(quicksilver,stickfish,carp).
 
-% BODY: PYGMY
-bodyparent(bananafish,beta,pygmy).
-bodyparent(bananafish,pigmy,pygmy).
-bodyparent(beta,quicksilver,pygmy).
-bodyparent(carp,quicksilver,pygmy).
-bodyparent(carp,spotanus,pygmy).
-bodyparent(leaffish,spotanus,pygmy).
-bodyparent(pigmy,pigmy,pygmy).
+% BODY: PIGMY
+bodyparent(bananafish,beta,pigmy).
+bodyparent(bananafish,pigmy,pigmy).
+bodyparent(beta,quicksilver,pigmy).
+bodyparent(carp,quicksilver,pigmy).
+bodyparent(carp,spotanus,pigmy).
+bodyparent(leaffish,spotanus,pigmy).
+bodyparent(pigmy,pigmy,pigmy).
 
 % BODY: QUICKSILVER
 bodyparent(bananafish,spotanus,quicksilver).
@@ -519,25 +519,18 @@ finparent(snubbed,tiger,fanned).
 finparent(tiger,wasp,fanned).
 
 % FIN: SNUBBED
-finparent(canary,greenfin,snubbed).
-finparent(canary,razorback,snubbed).
-finparent(crimson,crimson,snubbed).
-finparent(crimson,spined,snubbed).
-finparent(fanned,finless,snubbed).
-finparent(fanned,twin-fin,snubbed).
-finparent(finless,pink,snubbed).
-finparent(flagged,pink,snubbed).
-finparent(flagged,snubbed,snubbed).
-finparent(golden,spined,snubbed).
-finparent(golden,stubby,snubbed).
-finparent(great-sail,snubbed,snubbed).
-finparent(great-sail,wasp,snubbed).
-finparent(greenfin,wasp,snubbed).
-finparent(hornet,twin-fin,snubbed).
-finparent(orange,razorback,snubbed).
-finparent(orange,speckled,snubbed).
-finparent(oriental,speckled,snubbed).
-finparent(oriental,stubby,snubbed).
+finparent(canary,fanned,snubbed).
+finparent(canary,pink,snubbed).
+finparent(crimson,silky,snubbed).
+finparent(fanned,orange,snubbed).
+finparent(golden,silky,snubbed).
+finparent(golden,tiger,snubbed).
+finparent(hornet,orange,snubbed).
+finparent(hornet,oriental,snubbed).
+finparent(oriental,tiger,snubbed).
+finparent(pink,wasp,snubbed).
+finparent(snubbed,snubbed,snubbed).
+finparent(snubbed,wasp,snubbed).
 
 % FIN: CRIMSON
 finparent(canary,greenfin,crimson).
