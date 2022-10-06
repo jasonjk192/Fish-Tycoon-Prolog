@@ -577,35 +577,35 @@ indirectRelationBody(P1,P2,C):- 	body(P1,P2,C), P1\==C, P2\==C.
 indirectRelationBody(P1,P2,C):- 	body(P1,X,C), P1\==C, X\==C.
 indirectRelationBody(P1,P2,C):- 	body(P2,X,C), P2\==C, X\==C.
 indirectRelationBody(P1,P2,C):- 	body(P1,X,C1), P1\==C1, X\==C1,
-									body(P2,Y,C2), P2\==C2, Y\==C2,
-									indirectRelationBody(C1,C2,C), C1\==C, C2\==C.
+					body(P2,Y,C2), P2\==C2, Y\==C2,
+					indirectRelationBody(C1,C2,C), C1\==C, C2\==C.
 
 indirectRelationFin(P1,P2,C):- 	fin(P1,P2,C), P1\==C, P2\==C.
 indirectRelationFin(P1,P2,C):- 	fin(P1,X,C), P1\==C, X\==C.
 indirectRelationFin(P1,P2,C):- 	fin(P2,X,C), P2\==C, X\==C.
 indirectRelationFin(P1,P2,C):- 	fin(P1,X,C1), P1\==C1, X\==C1,
-								fin(P2,Y,C2), P2\==C2, Y\==C2,
-								indirectRelationFin(C1,C2,C), C1\==C, C2\==C.
+				fin(P2,Y,C2), P2\==C2, Y\==C2,
+				indirectRelationFin(C1,C2,C), C1\==C, C2\==C.
 								
 % Direct Relation: Checks if target species can be reached only from the 2 starting parent species
 								
 directRelationBody(P1,P2,C):-	body(P1,P2,C), P1\==C, P2\==C.
 directRelationBody(P1,P2,C):-	body(P1,P2,C1),
-								directRelationBody(P1,C1,C), C1\==C, P1\==C.
+				directRelationBody(P1,C1,C), C1\==C, P1\==C.
 directRelationBody(P1,P2,C):-	body(P1,P2,C1),
-								directRelationBody(P2,C1,C), C1\==C, P2\==C.
+				directRelationBody(P2,C1,C), C1\==C, P2\==C.
 
 directRelationFin(P1,P2,C):-	fin(P1,P2,C), P1\==C, P2\==C.
 directRelationFin(P1,P2,C):-	fin(P1,P2,C1),
-								directRelationFin(P1,C1,C), C1\==C, P1\==C.
+				directRelationFin(P1,C1,C), C1\==C, P1\==C.
 directRelationFin(P1,P2,C):-	fin(P1,P2,C1),
-								directRelationFin(P2,C1,C), C1\==C, P2\==C.
+				directRelationFin(P2,C1,C), C1\==C, P2\==C.
 
 directRelationFish(F1,B1,F2,B2,FC,BC):-	body(B1,B2,BC), fin(F1,F2,FC), B1\==BC, B2\==BC, F1\==FC, F2\==FC.
 directRelationFish(F1,B1,F2,B2,FC,BC):- body(B1,B2,BC1), fin(F1,F2,FC1),
-										directRelationFish(F1,B1,FC1,BC1,FC,BC), BC1\==BC, B1\==BC, FC1\==FC, F1\==FC.
+					directRelationFish(F1,B1,FC1,BC1,FC,BC), BC1\==BC, B1\==BC, FC1\==FC, F1\==FC.
 directRelationFish(F1,B1,F2,B2,FC,BC):- body(B1,B2,BC1), fin(F1,F2,FC1),
-										directRelationFish(F2,B2,FC1,BC1,FC,BC), BC1\==BC, B2\==BC, FC1\==FC, F2\==FC.
+					directRelationFish(F2,B2,FC1,BC1,FC,BC), BC1\==BC, B2\==BC, FC1\==FC, F2\==FC.
 
 % -------------------------------------------------
 % Rules of support functions
@@ -623,38 +623,38 @@ writePPC(F1,B1,F2,B2,FC,BC):- write(F1), write(' '), write(B1), write(' + '), wr
 
 % Allows for indented outputs
 
-showDirectRelationBody(P1,P2,C,I):- body(P1,P2,C), P1\==C, P2\==C,
-										writePPC(P1,P2,C).
+showDirectRelationBody(P1,P2,C,I):-	body(P1,P2,C), P1\==C, P2\==C,
+					writePPC(P1,P2,C).
 showDirectRelationBody(P1,P2,C,I):-	body(P1,P2,C1),
-										writeIndentLoop(I), writePPC(P1,P2,C1),
-									showDirectRelationBody(P1,C1,C,I+1), C1\==C, P1\==C,
-										writeIndentLoop(I), writePPC(P1,C1,C).
-showDirectRelationBody(P1,P2,C,I):- body(P1,P2,C1),
-										writeIndentLoop(I), writePPC(P1,P2,C1),
-									showDirectRelationBody(P2,C1,C,I+1), C1\==C, P1\==C,
-										writeIndentLoop(I), writePPC(P2,C1,C).
+					writeIndentLoop(I), writePPC(P1,P2,C1),
+					showDirectRelationBody(P1,C1,C,I+1), C1\==C, P1\==C,
+					writeIndentLoop(I), writePPC(P1,C1,C).
+showDirectRelationBody(P1,P2,C,I):- 	body(P1,P2,C1),
+					writeIndentLoop(I), writePPC(P1,P2,C1),
+					showDirectRelationBody(P2,C1,C,I+1), C1\==C, P1\==C,
+					writeIndentLoop(I), writePPC(P2,C1,C).
 										
 showDirectRelationFin(P1,P2,C,I):- 	fin(P1,P2,C), P1\==C, P2\==C,
-										writePPC(P1,P2,C).
+					writePPC(P1,P2,C).
 showDirectRelationFin(P1,P2,C,I):-	fin(P1,P2,C1),
-										writeIndentLoop(I), writePPC(P1,P2,C1),
-									showDirectRelationFin(P1,C1,C,I+1), C1\==C, P1\==C,
-										writeIndentLoop(I), writePPC(P1,C1,C).
+					writeIndentLoop(I), writePPC(P1,P2,C1),
+					showDirectRelationFin(P1,C1,C,I+1), C1\==C, P1\==C,
+					writeIndentLoop(I), writePPC(P1,C1,C).
 showDirectRelationFin(P1,P2,C,I):- 	fin(P1,P2,C1),
-										writeIndentLoop(I), writePPC(P1,P2,C1),
-									showDirectRelationFin(P2,C1,C,I+1), C1\==C, P1\==C,
-										writeIndentLoop(I), writePPC(P2,C1,C).
+					writeIndentLoop(I), writePPC(P1,P2,C1),
+					showDirectRelationFin(P2,C1,C,I+1), C1\==C, P1\==C,
+					writeIndentLoop(I), writePPC(P2,C1,C).
 
-showDirectRelationFish(F1,B1,F2,B2,FC,BC,I):- body(B1,B2,BC), fin(F1,F2,FC), B1\==BC, B2\==BC, F1\==FC, F2\==FC,
-												writePPC(F1,B1,F2,B2,FC,BC).
+showDirectRelationFish(F1,B1,F2,B2,FC,BC,I):- 	body(B1,B2,BC), fin(F1,F2,FC), B1\==BC, B2\==BC, F1\==FC, F2\==FC,
+						writePPC(F1,B1,F2,B2,FC,BC).
 showDirectRelationFish(F1,B1,F2,B2,FC,BC,I):-	body(B1,B2,BC1), fin(F1,F2,FC1),
-												writeIndentLoop(I), writePPC(F1,B1,F2,B2,FC1,BC1),
-											showDirectRelationFish(F1,B1,FC1,BC1,FC,BC,I+1), BC1\==BC, B1\==BC, FC1\==FC, F1\==FC,
-												writeIndentLoop(I), writePPC(F1,B1,FC1,BC1,FC,BC).
-showDirectRelationFish(F1,B1,F2,B2,FC,BC,I):- body(B1,B2,BC1), fin(F1,F2,FC1),
-												writeIndentLoop(I), writePPC(F1,B1,F2,B2,FC1,BC1),
-											showDirectRelationFish(F2,B2,FC1,BC1,FC,BC,I+1), BC1\==BC, B2\==BC, FC1\==FC, F2\==FC,
-												writeIndentLoop(I), writePPC(F2,B2,FC1,BC1,FC,BC).
+						writeIndentLoop(I), writePPC(F1,B1,F2,B2,FC1,BC1),
+						showDirectRelationFish(F1,B1,FC1,BC1,FC,BC,I+1), BC1\==BC, B1\==BC, FC1\==FC, F1\==FC,
+						writeIndentLoop(I), writePPC(F1,B1,FC1,BC1,FC,BC).
+showDirectRelationFish(F1,B1,F2,B2,FC,BC,I):- 	body(B1,B2,BC1), fin(F1,F2,FC1),
+						writeIndentLoop(I), writePPC(F1,B1,F2,B2,FC1,BC1),
+						showDirectRelationFish(F2,B2,FC1,BC1,FC,BC,I+1), BC1\==BC, B2\==BC, FC1\==FC, F2\==FC,
+						writeIndentLoop(I), writePPC(F2,B2,FC1,BC1,FC,BC).
 
 % -------------------------------------------------
 % Rules to output relations
