@@ -265,6 +265,6 @@ if cb3.get()==1:
 ##########################
 
 prolog = Prolog()
-prolog.consult("D://Program Files//swipl//bin//prolog//fishtycoon.pl")
+prolog.consult("fishtycoon.pl")
 
 root.mainloop()
