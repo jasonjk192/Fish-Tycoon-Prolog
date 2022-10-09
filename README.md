@@ -11,6 +11,11 @@ indirectRelationBody() and indirectRelationFin() allow for the language predicti
 
 You can of course use variables to let the language predict the outcomes which is quite interesting.
 
+## Python file
+Uses directRelationFish() to generate unique descendants (not same body or fin types as the starting species).
+
+TODO: Ability to choose if parents/children are user-specified or dynamically generated using prolog logic.
+
 Why this?
 
 I wanted to find a way to determine if I could reach a target species given 2 parent species. It's mostly for fun to be honest. Feel free to play around.
